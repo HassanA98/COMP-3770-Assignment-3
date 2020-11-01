@@ -40,6 +40,6 @@ public class Mage : MonoBehaviour
 
     public string toString()
     {
-        return "Mage: " + health + "\n";
+        return "Mage," + health;
     }
 }

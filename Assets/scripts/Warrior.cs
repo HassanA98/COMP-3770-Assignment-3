@@ -38,6 +38,6 @@ public class Warrior : MonoBehaviour
 
     public string toString()
     {
-        return "Warrior: " + health + "\n";
+        return "Warrior," + health;
     }
 }

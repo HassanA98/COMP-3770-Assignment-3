@@ -40,6 +40,6 @@ public class Rogue : MonoBehaviour
 
     public string toString()
     {
-        return "Rogue: " + health + "\n";
+        return "Rogue," + health;
     }
 }

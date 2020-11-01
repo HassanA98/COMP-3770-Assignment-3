@@ -16,12 +16,14 @@ public class Boss : MonoBehaviour
     public MoonkinDruid dmg3;
 
     private int random;
+    private int totalDmg;
 
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
         damage = 0;
+        totalDmg = 0;
         isDead = false;
     }
 
@@ -41,31 +43,40 @@ public class Boss : MonoBehaviour
         random = (int)Random.Range(5, 21);
         damage = random;
         healer.health -= damage;
+        totalDmg += damage;
 
         // dmg rogue
         random = (int)Random.Range(5, 21);
         damage = random;
         dmg1.health -= damage;
+        totalDmg += damage;
 
         //dmg Mage
         random = (int)Random.Range(5, 21);
         damage = random;
         dmg2.health -= damage;
+        totalDmg += damage;
 
         //dmg Druid
         random = (int)Random.Range(5, 21);
         damage = random;
         dmg3.health -= damage;
+        totalDmg += damage;
 
         //dmg Tank
         random = (int)Random.Range(45, 56);
         damage = random;
         tank.health -= damage;
-
+        totalDmg += damage;
     }
 
     public string toString()
     {
-        return "Boss: " + health + "\n";
+        return "Boss," + health;
+    }
+
+    public int getTotalDmg()
+    {
+        return totalDmg;
     }
 }

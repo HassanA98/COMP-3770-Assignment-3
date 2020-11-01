@@ -108,6 +108,6 @@ public class Priest : MonoBehaviour
     // to string for printing to cvs
     public string toString()
     {
-        return "Priest: " + health + "\n";
+        return "Priest," + health;
     }
 }
