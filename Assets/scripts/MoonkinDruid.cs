@@ -40,7 +40,7 @@ public class MoonkinDruid : MonoBehaviour
 
     public string toString()
     {
-        return "Moonkin Druid: " + health + "\n";
+        return "Moonkin Druid," + health;
     }
 
 
