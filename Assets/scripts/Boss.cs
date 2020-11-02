@@ -14,10 +14,9 @@ public class Boss : MonoBehaviour
     public Warrior tank;
     public Rogue dmg1;
     public Mage dmg2;
-    public Druid dmg3;
+    public MoonkinDruid dmg3;
 
     private int random;
-    private Text[] hold;
     public int totalDmg;
 
     // Start is called before the first frame update
@@ -27,7 +26,6 @@ public class Boss : MonoBehaviour
         damage = 0;
         totalDmg = 0;
         isDead = false;
-        hold = gameObject.GetComponentsInChildren<Text>();
     }
 
     // Update is called once per frame
@@ -38,9 +36,6 @@ public class Boss : MonoBehaviour
 
         if (health <= 0)
             isDead = true;
-
-        hold[0].text = "" + health;
-        hold[1].text = "" + damage;
     }
 
     public void dealDamage()
@@ -79,7 +74,7 @@ public class Boss : MonoBehaviour
 
     public string toString()
     {
-        return "Boss: " + health + "\n";
+        return "Boss," + health + ",";
     }
     
     public int getTotalDmg()

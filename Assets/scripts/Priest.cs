@@ -14,7 +14,7 @@ public class Priest : MonoBehaviour
     public Warrior tank;
     public Rogue damageDealer1;
     public Mage damageDealer2;
-    public Druid damageDealer3;
+    public MoonkinDruid damageDealer3;
 
     private int random;
     private Text[] hold;
