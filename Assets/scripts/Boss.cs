@@ -35,8 +35,6 @@ public class Boss : MonoBehaviour
 
          if (health <= 0) {
             isDead = true;
-            PlayerPrefs.SetInt("BossDmg", totalDmg);
-            PlayerPrefs.Save();
         }
     }
 
