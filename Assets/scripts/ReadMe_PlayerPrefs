@@ -1,0 +1,50 @@
+to reference the player prefs for each level:
+
+// declare variables to reference playerprefs from all 3 levels
+int bossdmg1;
+int teamdmg1;
+...
+(repeat to have var for both numbers, for all 3 lvls)
+
+//in Start() initialize variables to hold playerprefs
+// for lvl 1
+bossdmg1 = PlayerPrefs.GetInt("BossDmg1");
+teamdmg1 = PlayerPrefs.GetInt("TeamDmg1");
+
+// for lvl 2
+bossdmg2 = PlayerPrefs.GetInt("BossDmg2");
+teamdmg2 = PlayerPrefs.GetInt("TeamDmg2");
+
+// for lvl 3
+bossdmg3 = PlayerPrefs.GetInt("BossDmg3");
+teamdmg3 = PlayerPrefs.GetInt("TeamDmg3");
+
+* this will return the int value associated with the key "BossDmg1" (for example) which is set in the csvFilePrinters.
+
+for comparing and saving high score:
+
+// declare temp variables to reference current high score playerprefs for each level 
+private int highScoreT1;
+private int highScoreB1;
+
+private int highScoreT2;
+private int highScoreB1;
+
+private int highScoreT3;
+private int highScoreB1;
+
+* intialize to 0 in start()
+
+// in FixedUpdate() or (optional) self made function such as updateScores() to be called in FixedUpdate()
+
+if (bossdmg1 > highScoreB1) // if > 0 on first time step. compares to HighScore playerpref being held by temp var after first timestep
+{
+    PlayerPrefs.SetInt("HighScoreB1", bossdmg1); // save new highscore 
+    highScoreB1 = PlayerPrefs.GetInt("HighScoreB1"); // this will update the temp variable to compare to incoming scores
+    Playerprefs.Save(); // saves the playerprefs if changed
+}
+
+* repeat for all highscores
+
+to reference the highscores in the textfields:
+pull the value from the temp varaibles holding the highscore playerprefs, not from playerprefs.GetInt()
