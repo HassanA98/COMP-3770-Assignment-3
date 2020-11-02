@@ -32,6 +32,7 @@ public class Warrior : MonoBehaviour
         if (health <= 0) {
             isDead = true;
             PlayerPrefs.SetInt("WarriorDmg", totalDmg);
+            PlayerPrefs.Save();
         }
     }
 
