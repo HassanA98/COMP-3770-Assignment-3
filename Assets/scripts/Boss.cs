@@ -16,7 +16,7 @@ public class Boss : MonoBehaviour
     public MoonkinDruid dmg3;
 
     private int random;
-    private int totalDmg;
+    public int totalDmg;
 
     // Start is called before the first frame update
     void Start()
