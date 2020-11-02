@@ -1,4 +1,4 @@
-﻿using System.Collections;
+c﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
@@ -34,7 +34,7 @@ public class csvFilePrinter : MonoBehaviour
         timeStep = 0;
         
         // disable button
-        button.enabled = false;
+        button.interactable = false;
     }
 
     void FixedUpdate()
@@ -56,7 +56,7 @@ public class csvFilePrinter : MonoBehaviour
             savePlayerPrefs();
             writer.Flush();
             writer.Close();
-            button.enabled = true;
+            button.interactable = true;
         } // if any team meber is killed
         else if (warrior.isDead == true
                 || rogue.isDead == true
@@ -67,7 +67,7 @@ public class csvFilePrinter : MonoBehaviour
             savePlayerPrefs();
             writer.Flush();
             writer.Close();
-            button.enabled = true;
+            button.interactable = true;
         }
     }
 
