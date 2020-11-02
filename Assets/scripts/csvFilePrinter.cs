@@ -48,6 +48,7 @@ public class csvFilePrinter : MonoBehaviour
         // if boss dies
         if (boss.isDead == true)
         {
+            savePlayerPrefs();
             writer.Flush();
             writer.Close();
         } // if team gets whipped
@@ -57,6 +58,7 @@ public class csvFilePrinter : MonoBehaviour
                 && druid.isDead == true
                 && priest.isDead == true)
         {
+            savePlayerPrefs();
             writer.Flush();
             writer.Close();
         }
@@ -75,4 +77,12 @@ public class csvFilePrinter : MonoBehaviour
         health[3] = mage.toString();
         health[4] = druid.toString();
     }
+    
+    private void savePlayerPrefs(){
+        PlayerPrefs.SetInt("BossDmg1", boss.totalDmg);
+        int teamDmg = warrior.totalDmg + rogue.totalDmg + mage.totalDmg + druid.totalDmg;
+        PlayerPrefs.SetInt("teamDmg1", teamDmg);
+        PlayerPrefs.Save();
+    }
+    
 }
