@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Text;
 using System.IO;
 using System;
+using UnityEngine.UI;
 
 public class csvFilePrinter : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class csvFilePrinter : MonoBehaviour
     public Mage mage;
     public MoonkinDruid druid;
     public Priest priest;
+    public Button button;
 
     private string[] health = new string[5];
 
@@ -30,6 +32,9 @@ public class csvFilePrinter : MonoBehaviour
 
         // initialize timestep counter to 0
         timeStep = 0;
+        
+        // disable button
+        button.enabled = false;
     }
 
     void FixedUpdate()
@@ -51,16 +56,18 @@ public class csvFilePrinter : MonoBehaviour
             savePlayerPrefs();
             writer.Flush();
             writer.Close();
-        } // if team gets whipped
+            button.enabled = true;
+        } // if any team meber is killed
         else if (warrior.isDead == true
-                && rogue.isDead == true
-                && mage.isDead == true
-                && druid.isDead == true
-                && priest.isDead == true)
+                || rogue.isDead == true
+                || mage.isDead == true
+                || druid.isDead == true
+                || priest.isDead == true)
         {
             savePlayerPrefs();
             writer.Flush();
             writer.Close();
+            button.enabled = true;
         }
     }
 
