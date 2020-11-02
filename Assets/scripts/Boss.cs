@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
@@ -13,18 +14,18 @@ public class Boss : MonoBehaviour
     public Warrior tank;
     public Rogue dmg1;
     public Mage dmg2;
-    public MoonkinDruid dmg3;
+    public Druid dmg3;
 
     private int random;
-    private int totalDmg;
+    private Text[] hold;
 
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
         damage = 0;
-        totalDmg = 0;
         isDead = false;
+        hold = gameObject.GetComponentsInChildren<Text>();
     }
 
     // Update is called once per frame
@@ -35,6 +36,9 @@ public class Boss : MonoBehaviour
 
         if (health <= 0)
             isDead = true;
+
+        hold[0].text = "" + health;
+        hold[1].text = "" + damage;
     }
 
     public void dealDamage()
@@ -43,40 +47,31 @@ public class Boss : MonoBehaviour
         random = (int)Random.Range(5, 21);
         damage = random;
         healer.health -= damage;
-        totalDmg += damage;
 
         // dmg rogue
         random = (int)Random.Range(5, 21);
         damage = random;
         dmg1.health -= damage;
-        totalDmg += damage;
 
         //dmg Mage
         random = (int)Random.Range(5, 21);
         damage = random;
         dmg2.health -= damage;
-        totalDmg += damage;
 
         //dmg Druid
         random = (int)Random.Range(5, 21);
         damage = random;
         dmg3.health -= damage;
-        totalDmg += damage;
 
         //dmg Tank
         random = (int)Random.Range(45, 56);
         damage = random;
         tank.health -= damage;
-        totalDmg += damage;
+
     }
 
     public string toString()
     {
-        return "Boss," + health;
-    }
-
-    public int getTotalDmg()
-    {
-        return totalDmg;
+        return "Boss: " + health + "\n";
     }
 }

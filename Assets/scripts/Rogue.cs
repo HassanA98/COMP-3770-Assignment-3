@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Rogue : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Rogue : MonoBehaviour
     public Boss boss;
 
     private int random;
+    private Text[] hold;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,7 @@ public class Rogue : MonoBehaviour
         health = maxHealth;
         damage = 0;
         isDead = false;
+        hold = gameObject.GetComponentsInChildren<Text>();
     }
 
     // Update is called once per frame
@@ -29,6 +32,9 @@ public class Rogue : MonoBehaviour
 
         if (health <= 0)
             isDead = true;
+
+        hold[0].text = "" + health;
+        hold[1].text = "" + damage;
     }
 
     public void dealDamage()
@@ -40,6 +46,6 @@ public class Rogue : MonoBehaviour
 
     public string toString()
     {
-        return "Rogue," + health;
+        return "Rogue: " + health + "\n";
     }
 }

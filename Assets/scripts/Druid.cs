@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Warrior : MonoBehaviour
+public class Druid : MonoBehaviour
 {
     public int health;
-    public int maxHealth = 3000;
+    public int maxHealth = 1000;
     public int damage;
     public bool isDead;
 
@@ -19,7 +19,7 @@ public class Warrior : MonoBehaviour
     void Start()
     {
         health = maxHealth;
-        damage = 5;
+        damage = 0;
         isDead = false;
         hold = gameObject.GetComponentsInChildren<Text>();
     }
@@ -27,7 +27,7 @@ public class Warrior : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isDead == false)
+        if(isDead == false)
             dealDamage();
 
         if (health <= 0)
@@ -39,11 +39,15 @@ public class Warrior : MonoBehaviour
 
     public void dealDamage()
     {
+        random = (int) Random.Range(5, 16);
+        damage = random;
         boss.health -= damage;
     }
 
     public string toString()
     {
-        return "Warrior: " + health + "\n";
+        return "Druid: " + health + "\n";
     }
+
+
 }
