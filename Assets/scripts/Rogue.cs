@@ -29,8 +29,11 @@ public class Rogue : MonoBehaviour
         if (isDead == false)
             dealDamage();
 
-        if (health <= 0)
+         if (health <= 0) {
             isDead = true;
+            PlayerPrefs.SetInt("RogueDmg", totalDmg);
+            PlayerPrefs.Save();
+        }
     }
 
     public void dealDamage()
