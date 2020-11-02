@@ -1,0 +1,3 @@
+all scripts contain references to eachother including the cvsprinter.
+the cvs printer should be attached to an object out of the view of the scene
+attach the character objects to the script component of each character
