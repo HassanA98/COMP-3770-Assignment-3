@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Rogue : MonoBehaviour
+public class Druid : MonoBehaviour
 {
     public int health;
     public int maxHealth = 1000;
     public int damage;
-    public int totalDmg;
     public bool isDead;
 
     public Boss boss;
@@ -21,7 +20,6 @@ public class Rogue : MonoBehaviour
     {
         health = maxHealth;
         damage = 0;
-        totalDmg = 0;
         isDead = false;
         hold = gameObject.GetComponentsInChildren<Text>();
     }
@@ -29,26 +27,27 @@ public class Rogue : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isDead == false)
+        if(isDead == false)
             dealDamage();
 
-        if (health <= 0) 
+        if (health <= 0)
             isDead = true;
-            
+
         hold[0].text = "" + health;
         hold[1].text = "" + damage;
     }
 
     public void dealDamage()
     {
-        random = (int) Random.Range(15, 21);
+        random = (int) Random.Range(5, 16);
         damage = random;
         boss.health -= damage;
-        totalDmg += damage;
     }
 
     public string toString()
     {
-        return "Rogue: " + health + "\n";
+        return "Druid: " + health + "\n";
     }
+
+
 }
