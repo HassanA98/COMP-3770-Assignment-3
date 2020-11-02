@@ -49,6 +49,7 @@ public class csvFilePrinter2 : MonoBehaviour
         {
             if (mainMenuButton.interactable == false)
             {
+                savePlayerPrefs();
                 writer.WriteLine(BossDamage.text + "," + PlayersDamage.text);
 
                 writer.Flush();
@@ -60,6 +61,7 @@ public class csvFilePrinter2 : MonoBehaviour
         {
             if (mainMenuButton.interactable == false)
             {
+                savePlayerPrefs();
                 writer.WriteLine(BossDamage.text + "," + PlayersDamage.text);
 
                 writer.Flush();
@@ -112,5 +114,11 @@ public class csvFilePrinter2 : MonoBehaviour
         health[2] = rogue.toString();
         health[3] = mage.toString();
         health[4] = druid.toString();
+    }
+      private void savePlayerPrefs(){
+        PlayerPrefs.SetInt("BossDmg2", boss.totalDmg);
+        int teamDmg = warrior.totalDmg + rogue.totalDmg + mage.totalDmg + druid.totalDmg;
+        PlayerPrefs.SetInt("teamDmg2", teamDmg);
+        PlayerPrefs.Save();
     }
 }
