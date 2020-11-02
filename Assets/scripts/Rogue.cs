@@ -7,6 +7,7 @@ public class Rogue : MonoBehaviour
     public int health;
     public int maxHealth = 1000;
     public int damage;
+    public int totalDmg;
     public bool isDead;
 
     public Boss boss;
@@ -18,6 +19,7 @@ public class Rogue : MonoBehaviour
     {
         health = maxHealth;
         damage = 0;
+        totalDmg = 0;
         isDead = false;
     }
 
@@ -36,6 +38,7 @@ public class Rogue : MonoBehaviour
         random = (int) Random.Range(15, 21);
         damage = random;
         boss.health -= damage;
+        totalDmg += damage;
     }
 
     public string toString()
