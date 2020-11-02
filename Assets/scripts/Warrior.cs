@@ -8,6 +8,7 @@ public class Warrior : MonoBehaviour
     public int health;
     public int maxHealth = 3000;
     public int damage;
+    public int totalDmg;
     public bool isDead;
 
     public Boss boss;
@@ -20,6 +21,7 @@ public class Warrior : MonoBehaviour
     {
         health = maxHealth;
         damage = 5;
+        totalDmg = 0;
         isDead = false;
         hold = gameObject.GetComponentsInChildren<Text>();
     }
@@ -30,7 +32,7 @@ public class Warrior : MonoBehaviour
         if (isDead == false)
             dealDamage();
 
-        if (health <= 0)
+        if (health <= 0) 
             isDead = true;
 
         hold[0].text = "" + health;
@@ -40,6 +42,7 @@ public class Warrior : MonoBehaviour
     public void dealDamage()
     {
         boss.health -= damage;
+        totalDmg += damage;
     }
 
     public string toString()

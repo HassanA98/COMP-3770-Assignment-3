@@ -7,6 +7,7 @@ public class MoonkinDruid : MonoBehaviour
     public int health;
     public int maxHealth = 1000;
     public int damage;
+    public int totalDmg;
     public bool isDead;
 
     public Boss boss;
@@ -18,6 +19,7 @@ public class MoonkinDruid : MonoBehaviour
     {
         health = maxHealth;
         damage = 0;
+        totalDmg = 0;
         isDead = false;
     }
 
@@ -27,8 +29,9 @@ public class MoonkinDruid : MonoBehaviour
         if(isDead == false)
             dealDamage();
 
-        if (health <= 0)
+         if (health <= 0) 
             isDead = true;
+         
     }
 
     public void dealDamage()
@@ -36,6 +39,7 @@ public class MoonkinDruid : MonoBehaviour
         random = (int) Random.Range(5, 16);
         damage = random;
         boss.health -= damage;
+        totalDmg += damage;
     }
 
     public string toString()

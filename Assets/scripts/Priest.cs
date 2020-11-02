@@ -41,7 +41,7 @@ public class Priest : MonoBehaviour
     }
 
     // random damage or self heal
-    private void smallHeal() {
+    public void smallHeal() {
         random = (int) Random.Range(0, 6);
 
         switch (random) {
@@ -84,7 +84,7 @@ public class Priest : MonoBehaviour
     }
 
     // tank heal
-    private void bigHeal()
+    public void bigHeal()
     {
         if(tank.health < tank.maxHealth)
         {

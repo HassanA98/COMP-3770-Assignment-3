@@ -8,6 +8,7 @@ public class Mage : MonoBehaviour
     public int health;
     public int maxHealth = 1000;
     public int damage;
+    public int totalDmg;
     public bool isDead;
 
     public Boss boss;
@@ -20,6 +21,7 @@ public class Mage : MonoBehaviour
     {
         health = maxHealth;
         damage = 0;
+        totalDmg = 0;
         isDead = false;
         hold = gameObject.GetComponentsInChildren<Text>();
     }
@@ -30,7 +32,7 @@ public class Mage : MonoBehaviour
         if (isDead == false)
             dealDamage();
 
-        if (health <= 0)
+        if (health <= 0) 
             isDead = true;
 
         hold[0].text = "" + health;
@@ -42,6 +44,7 @@ public class Mage : MonoBehaviour
         random = (int) Random.Range(1, 31);
         damage = random;
         boss.health -= damage;
+        totalDmg += damage;
     }
 
     public string toString()
