@@ -1,4 +1,4 @@
-c﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
@@ -64,6 +64,7 @@ public class csvFilePrinter : MonoBehaviour
                 || druid.isDead == true
                 || priest.isDead == true)
         {
+            killTeam();
             savePlayerPrefs();
             writer.Flush();
             writer.Close();
@@ -91,5 +92,11 @@ public class csvFilePrinter : MonoBehaviour
         PlayerPrefs.SetInt("teamDmg1", teamDmg);
         PlayerPrefs.Save();
     }
-    
+    private void killTeam()
+    {
+        warrior.isDead = true;
+        rogue.isDead = true;
+        mage.isDead = true;
+        druid.isDead = true;
+    }
 }
