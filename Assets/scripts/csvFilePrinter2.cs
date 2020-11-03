@@ -47,27 +47,18 @@ public class csvFilePrinter2 : MonoBehaviour
         // if boss dies
         if (boss.isDead == true)
         {
-            if (mainMenuButton.interactable == false)
-            {
                 savePlayerPrefs();
-                writer.WriteLine(BossDamage.text + "," + PlayersDamage.text);
-
                 writer.Flush();
                 writer.Close();
                 mainMenuButton.interactable = true;
-            }
-        } // if team gets whipped
+            
+        } // if any member diess
         else if (warrior.isDead == true || rogue.isDead == true || mage.isDead == true || druid.isDead == true || priest.isDead == true)
         {
-            if (mainMenuButton.interactable == false)
-            {
                 savePlayerPrefs();
-                writer.WriteLine(BossDamage.text + "," + PlayersDamage.text);
-
                 writer.Flush();
                 writer.Close();
                 mainMenuButton.interactable = true;
-            }
         }
         else
         {
@@ -97,8 +88,11 @@ public class csvFilePrinter2 : MonoBehaviour
                 writer.Write(health[i]+",");
             }
             writer.Write("\n");
-            BossDamage.text = totalBossDamage.ToString();
-            PlayersDamage.text = totalPlayerDmg.ToString();
+            
+            if(mainMenuButton.interactable = false){
+                BossDamage.text = totalBossDamage.ToString();
+                PlayersDamage.text = totalPlayerDmg.ToString();
+            }
         }
     }
 
@@ -117,9 +111,8 @@ public class csvFilePrinter2 : MonoBehaviour
         health[5] = priest.toString();
     }
       private void savePlayerPrefs(){
-        PlayerPrefs.SetInt("BossDmg2", boss.totalDmg);
-        int teamDmg = warrior.totalDmg + rogue.totalDmg + mage.totalDmg + druid.totalDmg;
-        PlayerPrefs.SetInt("teamDmg2", teamDmg);
+        PlayerPrefs.SetInt("BossDmg2", totalBossDamage);
+        PlayerPrefs.SetInt("teamDmg2", totalPlayerDmg);
         PlayerPrefs.Save();
     }
 }
