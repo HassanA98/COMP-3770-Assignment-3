@@ -78,8 +78,8 @@ public class csvFilePrinter3 : MonoBehaviour
             
             if(mainMenuButton.interactable == false)
             {
-            BossDamage.text = totalBossDamage.ToString();
-            PlayersDamage.text = totalPlayerDmg.ToString();
+            BossDamage.text = "" + totalBossDamage;
+            PlayersDamage.text = "" + totalPlayerDmg;
             }
         }        
     }
