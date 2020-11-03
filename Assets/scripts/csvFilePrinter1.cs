@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Text;
 using System.IO;
 using System;
+using System.Linq;
 
 public class csvFilePrinter1 : MonoBehaviour
 {
@@ -25,11 +26,21 @@ public class csvFilePrinter1 : MonoBehaviour
     private int timeStep;
     private int totalPlayerDmg;
     private int totalBossDamage;
+    private int previousPDmg = 0;
+    private int previousBDmg = 0;
 
     void Start()
     {
         // get file path
         filePath = getPath();
+
+        if (File.Exists(filePath))
+        {
+            string lastLine = File.ReadLines(filePath).Last();
+            string[] scores = lastLine.Split(',');
+            previousBDmg = Int32.Parse(scores[0]);
+            previousPDmg = Int32.Parse(scores[1]);
+        }        
 
         // initialize writer with filePath
         writer = System.IO.File.CreateText(filePath);
@@ -50,7 +61,9 @@ public class csvFilePrinter1 : MonoBehaviour
             if(mainMenuButton.interactable == false)
             {
                 savePlayerPrefs();
-                writer.WriteLine(BossDamage.text+","+PlayersDamage.text);
+                previousBDmg = Math.Max(previousBDmg, Int32.Parse(BossDamage.text));
+                previousPDmg = Math.Max(previousPDmg, Int32.Parse(PlayersDamage.text));
+                writer.WriteLine(previousBDmg+","+previousPDmg);
 
                 writer.Flush();
                 writer.Close();
@@ -62,7 +75,9 @@ public class csvFilePrinter1 : MonoBehaviour
             if(mainMenuButton.interactable == false)
             {
                 savePlayerPrefs();
-                writer.WriteLine(BossDamage.text+","+PlayersDamage.text);
+                previousBDmg = Math.Max(previousBDmg, Int32.Parse(BossDamage.text));
+                previousPDmg = Math.Max(previousPDmg, Int32.Parse(PlayersDamage.text));
+                writer.WriteLine(previousBDmg+","+previousPDmg);
 
                 writer.Flush();
                 writer.Close();
