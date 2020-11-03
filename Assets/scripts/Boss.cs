@@ -40,6 +40,8 @@ public class Boss : MonoBehaviour
 
     public void dealDamage()
     {
+        totalDmg = 0;
+        
         // dmg healer
         random = (int)Random.Range(5, 21);
         damage = random;

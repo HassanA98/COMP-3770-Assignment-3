@@ -17,7 +17,6 @@ public class Priest : MonoBehaviour
     public MoonkinDruid damageDealer3;
 
     private int random;
-    private Text[] hold;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +24,6 @@ public class Priest : MonoBehaviour
         health = maxHealth;
         mana = maxMana;
         isDead = false;
-        hold = gameObject.GetComponentsInChildren<Text>();
     }
 
     void FixedUpdate()
@@ -35,9 +33,6 @@ public class Priest : MonoBehaviour
         
         if (health <= 0)
             isDead = true;
-
-        hold[0].text = "" + health;
-        hold[1].text = "" + mana;
     }
 
     // random damage or self heal
@@ -114,6 +109,6 @@ public class Priest : MonoBehaviour
     // to string for printing to cvs
     public string toString()
     {
-        return "Priest: " + health + "\n";
+        return "Priest," + health + ",";
     }
 }

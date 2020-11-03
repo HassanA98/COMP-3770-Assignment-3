@@ -14,7 +14,6 @@ public class Warrior : MonoBehaviour
     public Boss boss;
 
     private int random;
-    private Text[] hold;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +22,6 @@ public class Warrior : MonoBehaviour
         damage = 5;
         totalDmg = 0;
         isDead = false;
-        hold = gameObject.GetComponentsInChildren<Text>();
     }
 
     // Update is called once per frame
@@ -34,9 +32,6 @@ public class Warrior : MonoBehaviour
 
         if (health <= 0) 
             isDead = true;
-
-        hold[0].text = "" + health;
-        hold[1].text = "" + damage;
     }
 
     public void dealDamage()
@@ -47,6 +42,6 @@ public class Warrior : MonoBehaviour
 
     public string toString()
     {
-        return "Warrior: " + health + "\n";
+        return "Warrior," + health + ",";
     }
 }

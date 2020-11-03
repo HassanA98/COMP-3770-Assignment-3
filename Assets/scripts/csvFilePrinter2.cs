@@ -18,7 +18,7 @@ public class csvFilePrinter2 : MonoBehaviour
     public Text BossDamage;
     public Text PlayersDamage;
 
-    private string[] health = new string[5];
+    private string[] health = new string[6];
 
     private StreamWriter writer;
     private string filePath;
@@ -89,12 +89,12 @@ public class csvFilePrinter2 : MonoBehaviour
             }
 
             totalPlayerDmg += warrior.damage + druid.damage + mage.damage + rogue.damage;
-            totalBossDamage = boss.getTotalDmg();
-
+            totalBossDamage += boss.getTotalDmg();
+            
             // write health to file
-            for (int i = 0; i < health.Length; i++)
+            for(int i = 0; i < health.Length; i++)
             {
-                writer.Write(health[i] + ",");
+                writer.Write(health[i]+",");
             }
             writer.Write("\n");
             BossDamage.text = totalBossDamage.ToString();
@@ -114,6 +114,7 @@ public class csvFilePrinter2 : MonoBehaviour
         health[2] = rogue.toString();
         health[3] = mage.toString();
         health[4] = druid.toString();
+        health[5] = priest.toString();
     }
       private void savePlayerPrefs(){
         PlayerPrefs.SetInt("BossDmg2", boss.totalDmg);

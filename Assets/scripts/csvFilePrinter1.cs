@@ -6,7 +6,7 @@ using System.Text;
 using System.IO;
 using System;
 
-public class csvFilePrinter3 : MonoBehaviour
+public class csvFilePrinter1 : MonoBehaviour
 {
     public Boss boss;
     public Warrior warrior;
@@ -75,8 +75,7 @@ public class csvFilePrinter3 : MonoBehaviour
             timeStep++;
 
             totalPlayerDmg += warrior.damage + druid.damage + mage.damage + rogue.damage;
-            warrior.health -= boss.getTotalDmg()/100;
-            totalBossDamage += boss.getTotalDmg() + (boss.getTotalDmg()/100);
+            totalBossDamage += boss.getTotalDmg();
             
             // write health to file
             for(int i = 0; i < health.Length; i++)
@@ -91,7 +90,7 @@ public class csvFilePrinter3 : MonoBehaviour
 
     private string getPath()
     {
-        return Application.dataPath + "_Level3.csv";
+        return Application.dataPath + "_Level1.csv";
     }
 
     private void loadString()
@@ -104,9 +103,9 @@ public class csvFilePrinter3 : MonoBehaviour
         health[5] = priest.toString();
     }
       private void savePlayerPrefs(){
-        PlayerPrefs.SetInt("BossDmg3", boss.totalDmg);
+        PlayerPrefs.SetInt("BossDmg1", boss.totalDmg);
         int teamDmg = warrior.totalDmg + rogue.totalDmg + mage.totalDmg + druid.totalDmg;
-        PlayerPrefs.SetInt("teamDmg3", teamDmg);
+        PlayerPrefs.SetInt("teamDmg1", teamDmg);
         PlayerPrefs.Save();
     }
 }
