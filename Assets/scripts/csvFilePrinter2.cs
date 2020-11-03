@@ -59,7 +59,6 @@ public class csvFilePrinter2 : MonoBehaviour
         {
             if (mainMenuButton.interactable == false)
             {
-                savePlayerPrefs();
                 previousBDmg = Math.Max(previousBDmg, Int32.Parse(BossDamage.text));
                 previousPDmg = Math.Max(previousPDmg, Int32.Parse(PlayersDamage.text));
                 writer.WriteLine(previousBDmg+","+previousPDmg);
@@ -73,7 +72,6 @@ public class csvFilePrinter2 : MonoBehaviour
         {
             if (mainMenuButton.interactable == false)
             {
-                savePlayerPrefs();
                 previousBDmg = Math.Max(previousBDmg, Int32.Parse(BossDamage.text));
                 previousPDmg = Math.Max(previousPDmg, Int32.Parse(PlayersDamage.text));
                 writer.WriteLine(previousBDmg+","+previousPDmg);
@@ -129,11 +127,5 @@ public class csvFilePrinter2 : MonoBehaviour
         health[3] = mage.toString();
         health[4] = druid.toString();
         health[5] = priest.toString();
-    }
-      private void savePlayerPrefs(){
-        PlayerPrefs.SetInt("BossDmg2", boss.totalDmg);
-        int teamDmg = warrior.totalDmg + rogue.totalDmg + mage.totalDmg + druid.totalDmg;
-        PlayerPrefs.SetInt("teamDmg2", teamDmg);
-        PlayerPrefs.Save();
     }
 }
