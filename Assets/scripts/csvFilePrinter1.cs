@@ -25,6 +25,8 @@ public class csvFilePrinter1 : MonoBehaviour
     private int timeStep;
     private int totalPlayerDmg;
     private int totalBossDamage;
+    
+    private int teamDmg;
 
     void Start()
     {
@@ -74,7 +76,8 @@ public class csvFilePrinter1 : MonoBehaviour
                 writer.Write(health[i]+",");
             }
             writer.Write("\n");
-            if(mainMenuButton.interactable == false;){
+            
+            if(mainMenuButton.interactable == false){
                  BossDamage.text = "" + totalBossDamage;
                  PlayersDamage.text = "" + totalPlayerDmg;
             }
@@ -96,8 +99,8 @@ public class csvFilePrinter1 : MonoBehaviour
         health[5] = priest.toString();
     }
       private void savePlayerPrefs(){
-        PlayerPrefs.SetInt("BossDmg1", boss.totalDmg);
-        int teamDmg = warrior.totalDmg + rogue.totalDmg + mage.totalDmg + druid.totalDmg;
+        PlayerPrefs.SetInt("BossDmg1", boss.getTotalDmg());
+        teamDmg = totalPlayerDmg;
         PlayerPrefs.SetInt("teamDmg1", teamDmg);
         PlayerPrefs.Save();
     }
