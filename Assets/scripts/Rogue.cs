@@ -14,7 +14,6 @@ public class Rogue : MonoBehaviour
     public Boss boss;
 
     private int random;
-    private Text[] hold;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +22,6 @@ public class Rogue : MonoBehaviour
         damage = 0;
         totalDmg = 0;
         isDead = false;
-        hold = gameObject.GetComponentsInChildren<Text>();
     }
 
     // Update is called once per frame
@@ -34,9 +32,6 @@ public class Rogue : MonoBehaviour
 
         if (health <= 0) 
             isDead = true;
-            
-        hold[0].text = "" + health;
-        hold[1].text = "" + damage;
     }
 
     public void dealDamage()
@@ -49,6 +44,6 @@ public class Rogue : MonoBehaviour
 
     public string toString()
     {
-        return "Rogue: " + health + "\n";
+        return "Rogue," + health + ",";
     }
 }

@@ -613,8 +613,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 597492614}
-  - component: {fileID: 597492615}
   - component: {fileID: 597492616}
+  - component: {fileID: 597492615}
   m_Layer: 5
   m_Name: Script
   m_TagString: Untagged
@@ -650,7 +650,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 597492613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e35b4a64ec9a5c40aa45d700a142f8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e1717b22b8b5c249a8d6d1205d8df53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 1227761364}
@@ -1473,7 +1473,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 7dc686ef16ac0864eaa64e2699d88fff, type: 3}
+  m_Texture: {fileID: 2800000, guid: 5984fc726315cb642b8063a513ec6dbd, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1545,7 +1545,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 3
+  m_text: Level 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
