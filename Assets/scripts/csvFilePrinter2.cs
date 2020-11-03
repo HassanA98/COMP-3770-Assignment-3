@@ -89,7 +89,7 @@ public class csvFilePrinter2 : MonoBehaviour
             }
             writer.Write("\n");
             
-            if(mainMenuButton.interactable = false){
+            if(mainMenuButton.interactable == false){
                 BossDamage.text = totalBossDamage.ToString();
                 PlayersDamage.text = totalPlayerDmg.ToString();
             }
