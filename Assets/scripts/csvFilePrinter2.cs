@@ -90,8 +90,8 @@ public class csvFilePrinter2 : MonoBehaviour
             writer.Write("\n");
             
             if(mainMenuButton.interactable == false){
-                BossDamage.text = totalBossDamage.ToString();
-                PlayersDamage.text = totalPlayerDmg.ToString();
+                BossDamage.text = "" + totalBossDamage;
+                PlayersDamage.text = "" + totalPlayerDmg;
             }
         }
     }
