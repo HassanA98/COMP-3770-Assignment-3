@@ -47,27 +47,18 @@ public class csvFilePrinter3 : MonoBehaviour
         // if boss dies
         if (boss.isDead == true)
         {
-            if(mainMenuButton.interactable == false)
-            {
+                mainMenuButton.interactable = true;
                 savePlayerPrefs();
-                writer.WriteLine(BossDamage.text+","+PlayersDamage.text);
-
                 writer.Flush();
                 writer.Close();
-                mainMenuButton.interactable = true;
             }
         } // if team gets whipped
         else if (warrior.isDead == true || rogue.isDead == true || mage.isDead == true || druid.isDead == true || priest.isDead == true)
         {
-            if(mainMenuButton.interactable == false)
-            {
+                mainMenuButton.interactable = true;
                 savePlayerPrefs();
-                writer.WriteLine(BossDamage.text+","+PlayersDamage.text);
-
                 writer.Flush();
                 writer.Close();
-                mainMenuButton.interactable = true;
-            }
         }
         else{
             //write time step increment
@@ -84,8 +75,12 @@ public class csvFilePrinter3 : MonoBehaviour
                 writer.Write(health[i]+",");
             }
             writer.Write("\n");
+            
+            if(mainMenuButton.interactable == false)
+            {
             BossDamage.text = totalBossDamage.ToString();
             PlayersDamage.text = totalPlayerDmg.ToString();
+            }
         }        
     }
 
@@ -104,9 +99,8 @@ public class csvFilePrinter3 : MonoBehaviour
         health[5] = priest.toString();
     }
       private void savePlayerPrefs(){
-        PlayerPrefs.SetInt("BossDmg3", boss.totalDmg);
-        int teamDmg = warrior.totalDmg + rogue.totalDmg + mage.totalDmg + druid.totalDmg;
-        PlayerPrefs.SetInt("teamDmg3", teamDmg);
+        PlayerPrefs.SetInt("BossDmg3", totalBossDamage);
+        PlayerPrefs.SetInt("teamDmg3", totalPlayerDmg);
         PlayerPrefs.Save();
     }
 }
